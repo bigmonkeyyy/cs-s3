@@ -12,5 +12,5 @@
     "frontend_server": "apache",
     "db_engine": "postgres",
     "db_username": "testuser",
-    "db_pass": "NFaB%LZ,wzPP6=xJ"
+    "db_pass": 
 }
