@@ -1,0 +1,16 @@
+{
+    "frontend_sub1_cidr": "10.1.16.0/24",
+    "frontend_sub2_cidr": "10.1.17.0/24",
+    "backend_sub1_cidr": "10.2.14.0/24",
+    "backend_sub2_cidr": "10.2.13.0/24",
+    "backend_sub3_cidr": "10.2.19.0/24",
+    "backend_sub4_cidr": "10.2.20.0/24",
+    "client": "demo",
+    "server_type": "t3.micro",
+    "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCn3hwQED7V32TMgsuX3E3xeWc9l3oyBYLQQdeyCdRfm24oUrTIRLfcByK6IE5jNkKGM61u3tE6tKm0TDCd/Sy16Z5WVL6XFn96qoYNmVNiNAsTCE2ONPHuhyZGvB2QkWaoFTnagY5LrKIP96OxfTULM1LFja6wNDHjULlNauoV3bJXI+o24OI4zUiSIoCzCVCm3xRdPAz7GETmX9cCtFEC1A86w077vxacMJC/7gi3BzxeSfQrdn+1nkbKeqvh/GpGeSGz0/bKBbbW/b8sLkit/94qfH14vZAorJtIgUiHUuMbhZTMZK2nXR0iP8xOTKWoluwcdtob2ZiQBsZC8ldh nina@DESKTOP-FH0VFSF",
+    "key_name": "myKey",
+    "frontend_server": "apache",
+    "db_engine": "postgres",
+    "db_username": "testuser",
+    "db_pass": "NFaB%LZ,wzPP6=xJ"
+}
