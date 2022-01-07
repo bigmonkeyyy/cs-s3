@@ -163,7 +163,7 @@ resource "aws_kms_key" "key" {
 }
 
 resource "aws_secretsmanager_secret" "rds" {
-  kms_key_id              = aws_kms_key.default.key_id
+  kms_key_id              = aws_kms_key.key.key_id
   name                    = "rds_admin"
   description             = "RDS Admin password"
   recovery_window_in_days = 14
