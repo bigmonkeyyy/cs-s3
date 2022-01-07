@@ -151,7 +151,32 @@ resource "aws_db_subnet_group" "db-subg" {
   tags = {
     Client = var.client
   }
-}             
+}
+
+resource "aws_kms_key" "key" {
+  description             = "RDS KMS key"
+  deletion_window_in_days = 10
+
+  tags = {
+    Client = var.client
+  }
+}
+
+resource "aws_secretsmanager_secret" "rds" {
+  kms_key_id              = aws_kms_key.default.key_id
+  name                    = "rds_admin"
+  description             = "RDS Admin password"
+  recovery_window_in_days = 14
+
+  tags = {
+    Client = var.client
+  }
+}
+
+resource "aws_secretsmanager_secret_version" "secret" {
+  secret_id     = aws_secretsmanager_secret.rds.id
+  secret_string = var.db_pass
+}
 
 resource "aws_db_instance" "main-db" {
   allocated_storage       = 20
@@ -162,6 +187,7 @@ resource "aws_db_instance" "main-db" {
   db_subnet_group_name    = aws_db_subnet_group.db-subg.id 
   vpc_security_group_ids  = [var.rds-sg-id[var.db_engine]] 
   skip_final_snapshot     = true
+  publicly_accessible     = true
   backup_retention_period = 10
   multi_az                = true
 }
