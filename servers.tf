@@ -90,6 +90,7 @@ resource "aws_lb_listener" "frontend-lb-listener" {
 
 # Backend
 resource "aws_lb" "backend-lb" {
+  name               = "backend-${var.client}"
   security_groups    = [data.aws_security_group.internal-lb-sg.id]
   internal           = true
   subnet_mapping { 
