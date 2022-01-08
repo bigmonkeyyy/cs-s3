@@ -46,7 +46,7 @@ resource "aws_lb_target_group" "frontend-tg" {
 }
 
 resource "aws_launch_template" "frontend" {
-  name                   = "frontend"
+  name                   = "frontend-${var.client}"
   image_id               = var.images[var.aws_region]
   instance_type          = var.server_type
   key_name               = var.key_name
@@ -165,7 +165,7 @@ resource "aws_kms_key" "key" {
 
 resource "aws_secretsmanager_secret" "rds" {
   kms_key_id              = aws_kms_key.key.key_id
-  name                    = "rds_admin"
+  name                    = "rds_admin-${var.client}"
   description             = "RDS Admin password"
   recovery_window_in_days = 14
 
