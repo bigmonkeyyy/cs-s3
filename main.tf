@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 resource "aws_key_pair" "kp" {
-    key_name   = var.key_name
+    key_name   = var.client
     public_key  = var.key
 }
