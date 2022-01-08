@@ -43,6 +43,10 @@ resource "aws_lb_target_group" "frontend-tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = var.frontned_vpc_id
+
+  tags = {
+    Client = var.client
+  }
 }
 
 resource "aws_launch_template" "frontend" {
@@ -60,7 +64,7 @@ resource "aws_launch_template" "frontend" {
 }
 
 resource "aws_autoscaling_group" "frontend-asg" { 
-  name                = "frontend-asg"
+  name                = "frontend-asg-${var.client}"
   desired_capacity    = 2
   max_size            = 5
   min_size            = 1 
@@ -69,6 +73,10 @@ resource "aws_autoscaling_group" "frontend-asg" {
   launch_template {
     id      = aws_launch_template.frontend.id
     version = "$Latest"
+  }
+
+  tags = {
+    Client = var.client
   }
 }
 
@@ -105,6 +113,10 @@ resource "aws_lb_target_group" "backend-tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = var.backend_vpc_id
+
+  tags = {
+    Client = var.client
+  }
 }                                
 
 resource "aws_launch_template" "backend" {
@@ -119,7 +131,8 @@ resource "aws_launch_template" "backend" {
   }
 }
 
-resource "aws_autoscaling_group" "backend-asg" {                   
+resource "aws_autoscaling_group" "backend-asg" { 
+  name                = "backend-asg-${var.client}"                  
   desired_capacity    = 2
   max_size            = 5
   min_size            = 1
@@ -128,6 +141,10 @@ resource "aws_autoscaling_group" "backend-asg" {
   launch_template {
     id      = aws_launch_template.backend.id
     version = "$Latest"
+  }
+
+  tags = {
+    Client = var.client
   }
 }
 
@@ -177,6 +194,10 @@ resource "aws_secretsmanager_secret" "rds" {
 resource "aws_secretsmanager_secret_version" "secret" {
   secret_id     = aws_secretsmanager_secret.rds.id
   secret_string = var.db_pass
+
+  tags = {
+    Client = var.client
+  }
 }
 
 resource "aws_db_instance" "main-db" {
@@ -191,4 +212,8 @@ resource "aws_db_instance" "main-db" {
   publicly_accessible     = true
   backup_retention_period = 10
   multi_az                = true
+
+  tags = {
+    Client = var.client
+  }
 }
