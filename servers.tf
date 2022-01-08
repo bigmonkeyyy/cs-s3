@@ -74,10 +74,6 @@ resource "aws_autoscaling_group" "frontend-asg" {
     id      = aws_launch_template.frontend.id
     version = "$Latest"
   }
-
-  tags = {
-    Client = var.client
-  }
 }
 
 resource "aws_autoscaling_attachment" "asg_attachment" {
@@ -142,10 +138,6 @@ resource "aws_autoscaling_group" "backend-asg" {
     id      = aws_launch_template.backend.id
     version = "$Latest"
   }
-
-  tags = {
-    Client = var.client
-  }
 }
 
 resource "aws_autoscaling_attachment" "asg_attachment_2" {
@@ -194,10 +186,6 @@ resource "aws_secretsmanager_secret" "rds" {
 resource "aws_secretsmanager_secret_version" "secret" {
   secret_id     = aws_secretsmanager_secret.rds.id
   secret_string = var.db_pass
-
-  tags = {
-    Client = var.client
-  }
 }
 
 resource "aws_db_instance" "main-db" {
