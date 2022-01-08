@@ -5,7 +5,7 @@
     "backend_sub2_cidr": "10.2.13.0/24",
     "backend_sub3_cidr": "10.2.19.0/24",
     "backend_sub4_cidr": "10.2.20.0/24",
-    "client": "duck",
+    "client": ,
     "server_type": "t3.micro",
     "key": ,
     "key_name": "Test",

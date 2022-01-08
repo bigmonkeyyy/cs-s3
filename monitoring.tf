@@ -67,13 +67,13 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 4,
-      y: 3,
-      width: 6,
-      height: 6,
-      properties: {
-        metrics: [
+      "type": "metric",
+      "x": 4,
+      "y": 3,
+      "width": 6,
+      "height": 6,
+      "properties": {
+        "metrics": [
             [ "AWS/ApplicationELB", "RequestCount", "LoadBalancer", "${aws_lb.frontend-lb.arn_suffix}", { "label": "Website requests", "color": "#2ca02c" } ],
             [ ".", "ActiveConnectionCount", ".", ".", { "label": "Active Connections", "color": "#98df8a" } ],
             [ ".", "TargetResponseTime", ".", ".", { "label": "Server response time", "visible": false } ],
@@ -97,12 +97,12 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 12,
-      y: 3,
-      width: 6,
-      height: 6,
-      properties: {
+      "type": "metric",
+      "x": 12,
+      "y": 3,
+      "width": 6,
+      "height": 6,
+      "properties": {
         "metrics": [
           [ "AWS/ApplicationELB", "RequestCount", "LoadBalancer", "${aws_lb.backend-lb.arn_suffix}", { "color": "#2ca02c", "label": "Request Count" } ],
           [ ".", "ActiveConnectionCount", ".", ".", { "color": "#98df8a", "label": "Active Connection Count" } ],
@@ -120,12 +120,12 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 4,
-      y: 4,
-      width: 6,
-      height: 6,
-      properties: {
+      "type": "metric",
+      "x": 4,
+      "y": 4,
+      "width": 6,
+      "height": 6,
+      "properties": {
         "metrics": [
           [ "AWS/AutoScaling", "GroupDesiredCapacity", "AutoScalingGroupName", "frontend-asg-${var.client}", { "color": "#ffbb78", "label": "Desired Capacity" } ],
           [ "AWS/ApplicationELB", "HealthyHostCount", "TargetGroup", "${aws_lb_target_group.frontend-tg.arn_suffix}", "LoadBalancer", "${aws_lb.frontend-lb.arn_suffix}" ],
@@ -154,12 +154,12 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 12,
-      y: 4,
-      width: 6,
-      height: 6,
-      properties: {
+      "type": "metric",
+      "x": 12,
+      "y": 4,
+      "width": 6,
+      "height": 6,
+      "properties": {
         "metrics": [
           [ "AWS/AutoScaling", "GroupDesiredCapacity", "AutoScalingGroupName", "backend-asg-${var.client}", { "color": "#ffbb78", "label": "Desired Instances" } ],
           [ "AWS/ApplicationELB", "HealthyHostCount", "TargetGroup", "${aws_lb_target_group.backend-tg.arn_suffix}", "LoadBalancer", "${aws_lb.backend-lb.arn_suffix}", { "color": "#ff7f0e" } ],
@@ -188,12 +188,12 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 4,
-      y: 5,
-      width: 6,
-      height: 6,
-      properties: {
+      "type": "metric",
+      "x": 4,
+      "y": 5,
+      "width": 6,
+      "height": 6,
+      "properties": {
         "metrics": [
           [ "AWS/EC2", "CPUUtilization", "AutoScalingGroupName", "frontend-asg-${var.client}", { "color": "#2ca02c" } ]
         ],
@@ -216,12 +216,12 @@ resource "aws_cloudwatch_dashboard" "main" {
       }
     },
     {
-      type: "metric",
-      x: 12,
-      y: 5,
-      width: 6,
-      height: 6,
-      properties: {
+      "type": "metric",
+      "x": 12,
+      "y": 5,
+      "width": 6,
+      "height": 6,
+      "properties": {
         "metrics": [
           [ "AWS/EC2", "CPUUtilization", "AutoScalingGroupName", "backend-asg-${var.client}", { "color": "#2ca02c" } ]
         ],
