@@ -10,7 +10,7 @@
     "key": ,
     "key_name": "Test",
     "frontend_server": "apache",
-    "db_engine": "postgres",
+    "db_engine": "mysql",
     "db_username": "testuser",
     "db_pass":
 }
